@@ -102,7 +102,7 @@ export function hackerSpeak(palabra){
 
     let result = "";
 
-    for (let char of palabra.toLowerCase()) {
+    for (let char of palabra) {
         if (char in remplazo) {
             result += remplazo[char];
         } else {
@@ -149,11 +149,11 @@ export function findShortestString(stringlist){
 export function isPalindrome(palabra){
     for (let i = 0; i < palabra.length / 2; i++) {
         if(palabra[i] !== palabra[palabra.length - 1 - i]){
-            return true;
+            return false;
         }
         
     }
-    return false;
+    return true;
 }
 
 export function sortStrings(lista){
