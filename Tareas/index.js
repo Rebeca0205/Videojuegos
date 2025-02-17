@@ -7,7 +7,7 @@
 "use strict";
 
 //Funciones
-function firstNonRepeating(texto){
+export function firstNonRepeating(texto){
     let count = 0;
     for (let i=0; i<texto.length; i++) {
         count = 0;
@@ -22,7 +22,7 @@ function firstNonRepeating(texto){
     }
 }
 
-function bubbleSort(listNum){
+export function bubbleSort(listNum){
     let n = listNum.length;
     for (let i = 0; i < n; i++) {
         let swapped = false;
@@ -36,7 +36,7 @@ function bubbleSort(listNum){
     }
 }
 
-function invertArray(listNum) {
+export function invertArray(listNum) {
     let newList = [];
     let num = listNum.length * -1;
     for (let i=-1; i>=num; i--) {
@@ -45,7 +45,7 @@ function invertArray(listNum) {
     return newList;
 }
 
-function invertArrayInplace(listNum) {
+export function invertArrayInplace(listNum) {
     let left = 0;
     let right = listNum.length - 1;
 
@@ -58,7 +58,7 @@ function invertArrayInplace(listNum) {
     }
 }
 
-function capitalize(palabra){
+export function capitalize(palabra){
     let result = "";
     let capitalizeNext = true;
 
@@ -80,7 +80,7 @@ function capitalize(palabra){
     return "La oracion: '" + palabra + "' con mayusculas en cada palabra: " + result;
 }
 
-function mcd(num1, num2){
+export function mcd(num1, num2){
     console.log("El mcd de " + num1 + " y " + num2 + " es:");
     while(num2 !== 0){
         let temp = num2;
@@ -91,7 +91,7 @@ function mcd(num1, num2){
     return num1;
 }
 
-function hackerSpeak(palabra){
+export function hackerSpeak(palabra){
     let remplazo = {
         'a': '4',
         'e': '3',
@@ -113,7 +113,7 @@ function hackerSpeak(palabra){
     return "El texto: " + palabra + " en hackerspeak: " + result;
 }
 
-function factorize(num){
+export function factorize(num){
     let newlist = [];
     let i = 1;
     let result = 0;
@@ -129,12 +129,12 @@ function factorize(num){
     return "Lista de factores de "+ num + ": " + newlist;
 }
 
-function deduplicate(doublenum){
+export function deduplicate(doublenum){
     let newlist = [...new Set(doublenum)];
     return "Lista sin numeros duplicados: " + newlist;
 }
 
-function findShortestString(stringlist){
+export function findShortestString(stringlist){
     let shortestString = stringlist[0];
 
     for (let i=1; i<stringlist.length; i++) {
@@ -146,7 +146,7 @@ function findShortestString(stringlist){
     return "La palabra '" + shortestString + "' es el string más pequeño";
 }
 
-function isPalindrome(palabra){
+export function isPalindrome(palabra){
     for (let i = 0; i < palabra.length / 2; i++) {
         if(palabra[i] !== palabra[palabra.length - 1 - i]){
             return "La palabra '" + palabra + "' NO es un palindromo";
@@ -156,11 +156,11 @@ function isPalindrome(palabra){
     return "La palabra '" + palabra + "' SI es un palindromo";
 }
 
-function sortStrings(lista){
+export function sortStrings(lista){
     return "La lista: '" + lista + "' ordenada alfabeticamente: " + lista.slice().sort();
 }
 
-function stats(listNum){
+export function stats(listNum){
     let MedianaYModa = [];
 
     //Media
@@ -196,7 +196,7 @@ function stats(listNum){
 
 }
 
-function popularString(listOfText){
+export function popularString(listOfText){
     let frequency = {};
     let max = 0;
     let result = "";
@@ -217,7 +217,7 @@ function popularString(listOfText){
     return "'" + result + "' es el string mas frecuente de: " + listOfText;
 }
 
-function isPowerOf2(n){
+export function isPowerOf2(n){
     if (n > 0 && (n & (n - 1)) == 0){
         return "El numero " + n + " SI es una potencia de 2";
     } else {
@@ -225,7 +225,7 @@ function isPowerOf2(n){
     }
 }
 
-function sortDescending(listNum){
+export function sortDescending(listNum){
     bubbleSort(listNum);
     let newList = invertArray(listNum);
     return newList;
