@@ -17,7 +17,7 @@ export function firstNonRepeating(texto){
             }
         }
         if(count == 1){
-            return "El primer caracter de '" + texto + "' que no se repite es: " + texto[i];
+            return texto[i];
         }
     }
 }
@@ -34,6 +34,8 @@ export function bubbleSort(listNum){
         }
         if (!swapped) break;
     }
+
+    return listNum;
 }
 
 export function invertArray(listNum) {
@@ -77,7 +79,7 @@ export function capitalize(palabra){
         }
     }
 
-    return "La oracion: '" + palabra + "' con mayusculas en cada palabra: " + result;
+    return result;
 }
 
 export function mcd(num1, num2){
@@ -102,7 +104,7 @@ export function hackerSpeak(palabra){
 
     let result = "";
 
-    for (let char of palabra.toLowerCase()) {
+    for (let char of palabra) {
         if (char in remplazo) {
             result += remplazo[char];
         } else {
@@ -110,7 +112,7 @@ export function hackerSpeak(palabra){
         }
     }
 
-    return "El texto: " + palabra + " en hackerspeak: " + result;
+    return result;
 }
 
 export function factorize(num){
@@ -126,42 +128,48 @@ export function factorize(num){
         i++;
     }
 
-    return "Lista de factores de "+ num + ": " + newlist;
+    return newlist;
 }
 
 export function deduplicate(doublenum){
     let newlist = [...new Set(doublenum)];
-    return "Lista sin numeros duplicados: " + newlist;
+    return newlist;
 }
 
 export function findShortestString(stringlist){
     let shortestString = stringlist[0];
+    let longitud = 0;
 
     for (let i=1; i<stringlist.length; i++) {
-        if (shortestString.length > stringlist[i].length){
+        if (shortestString.length >= stringlist[i].length){
             shortestString = stringlist[i];
+            longitud = shortestString.length;
         }
     }
 
-    return "La palabra '" + shortestString + "' es el string más pequeño";
+    return longitud;
 }
 
 export function isPalindrome(palabra){
     for (let i = 0; i < palabra.length / 2; i++) {
         if(palabra[i] !== palabra[palabra.length - 1 - i]){
-            return "La palabra '" + palabra + "' NO es un palindromo";
+            return false;
         }
         
     }
-    return "La palabra '" + palabra + "' SI es un palindromo";
+    return true;
 }
 
 export function sortStrings(lista){
-    return "La lista: '" + lista + "' ordenada alfabeticamente: " + lista.slice().sort();
+    return lista.slice().sort();
 }
 
 export function stats(listNum){
     let MedianaYModa = [];
+
+    if (listNum.length == 0){
+        return [0, 0];
+    }
 
     //Media
     let temp = 0;
@@ -192,7 +200,7 @@ export function stats(listNum){
 
     MedianaYModa.push(result);
 
-    return "La mediana y la moda de "+ listNum + " es: " + MedianaYModa;
+    return MedianaYModa;
 
 }
 
@@ -214,14 +222,14 @@ export function popularString(listOfText){
         }
     }
 
-    return "'" + result + "' es el string mas frecuente de: " + listOfText;
+    return result;
 }
 
 export function isPowerOf2(n){
     if (n > 0 && (n & (n - 1)) == 0){
-        return "El numero " + n + " SI es una potencia de 2";
+        return true;
     } else {
-        return "El numero " + n + " NO es una potencia de 2";
+        return false;
     }
 }
 

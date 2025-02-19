@@ -34,6 +34,8 @@ export function bubbleSort(listNum){
         }
         if (!swapped) break;
     }
+
+    return listNum;
 }
 
 export function invertArray(listNum) {
@@ -136,14 +138,16 @@ export function deduplicate(doublenum){
 
 export function findShortestString(stringlist){
     let shortestString = stringlist[0];
+    let longitud = 0;
 
     for (let i=1; i<stringlist.length; i++) {
-        if (shortestString.length > stringlist[i].length){
+        if (shortestString.length >= stringlist[i].length){
             shortestString = stringlist[i];
+            longitud = shortestString.length;
         }
     }
 
-    return shortestString;
+    return longitud;
 }
 
 export function isPalindrome(palabra){
@@ -162,6 +166,10 @@ export function sortStrings(lista){
 
 export function stats(listNum){
     let MedianaYModa = [];
+
+    if (listNum.length == 0){
+        return [0, 0];
+    }
 
     //Media
     let temp = 0;
@@ -230,47 +238,3 @@ export function sortDescending(listNum){
     let newList = invertArray(listNum);
     return newList;
 }
-
-//Seccion del main
-console.log(firstNonRepeating("abacddbec"));
-
-let arraynum = [7, 3, 9, 10, 23, 38, 2];
-bubbleSort(arraynum);
-console.log("La lista ordenada con bubble-sort: " + arraynum);
-
-let listNum = [4, 3, 2, 1];
-console.log("La lista " + listNum + " invertida:")
-console.log(invertArray(listNum));
-
-invertArrayInplace(listNum)
-console.log(listNum);
-
-console.log(capitalize("esto es un ejemplo")); 
-
-console.log(mcd(56, 98));
-
-console.log(hackerSpeak("javascript es divertido"));
-
-console.log(factorize(12));
-
-let doublenum = [1, 0, 1, 1, 0, 0];
-console.log(deduplicate(doublenum));
-
-let stringlist = ["manzana", "uva", "melon"];
-console.log(findShortestString(stringlist));
-
-console.log(isPalindrome("ojo"));
-
-let ordenado = ["manzana", "pera", "banana", "uva", "kiwi"];
-console.log(sortStrings(ordenado));
-
-let MedianaYModa = [8, 4, 2, 6, 8, 13, 17, 2, 4, 8];
-console.log(stats(MedianaYModa));
-
-let listOfText = ["blue", "red", "yellow", "yellow", "green", "blue", "blue"];
-console.log(popularString(listOfText));
-
-console.log(isPowerOf2(8));
-
-let decendingList = [9, 3, 6, 2, 5, 1, 8];
-console.log("Lista "+ decendingList + " en orden descendente: " + sortDescending(decendingList));
