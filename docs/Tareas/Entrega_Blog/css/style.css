@@ -1,0 +1,9 @@
+img {
+    width: 10rem;
+}
+
+.Info article{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
