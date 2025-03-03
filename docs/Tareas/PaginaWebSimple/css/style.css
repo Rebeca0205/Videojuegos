@@ -1,0 +1,60 @@
+body{
+    width: 100%;
+    margin: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    padding: 0px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(52, 61, 63);
+    color: aliceblue;
+}
+
+header nav a{
+    margin: 10px;
+}
+
+.titulo {
+    padding: 50px 50px;
+    text-align: center;
+    background-color: rgb(188, 123, 26);
+    color: rgb(255, 255, 255);
+}
+
+.Suscripcion {
+    display: flex;justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 10px;
+    background-color: rgb(52, 61, 63);
+    color: aliceblue;
+}
+
+.Suscripcion button {
+    background-color: rgb(188, 123, 26);
+    color: aliceblue;
+}
+
+img {
+    width: 5rem;
+}
+
+.imagenes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    margin: 50px 0px;
+}
+
+footer {
+    text-align: center;
+    background-color: rgb(52, 61, 63);
+    color: aliceblue;
+    padding: 10px 10px;
+}
+
