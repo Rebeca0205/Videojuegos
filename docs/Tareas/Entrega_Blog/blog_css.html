@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Conceptos de CSS</title>
+</head>
+<body>
+    <header>
+        <h1>Conceptos de Css</h1>
+    </header>
+
+    <main>
+
+        <section class="Info">
+            <h2>¿Qué es Css?</h2>
+            <article>
+                <p>Css quiere decir "Hojas de estilo en cascada", es decir, es un lenguaje de hojas de estilo que se utiliza para describir 
+                la presentación de un documento escrito en HTML o XML (incluidos los dialectos XML como SVG , MathML o XHTML ). CSS describe 
+                cómo deben representarse los elementos en la pantalla, en papel, en el habla o en otros medios.</p>
+            </article>
+            
+            <h2>Terminos de Css</h2>
+            <article>
+                <img src="img/css-syntax-outline.png">
+                <p> Un selector designa exactamente a qué elemento o elementos de nuestro HTML se debe apuntar y aplicar estilos (como color, tamaño y posición)</p>
+            </article>
+        </section>
+
+        <h3>Comandos de git</h3>
+        <table border="1" cellpading="20">
+            <tr>
+                <th>Comando</th>
+                <th>Descripcion</th>
+            </tr>
+            <tr>
+                <td>git status</td>
+                <td>Revisa el estado de la carpeta actual y si se encuentran cambios</td>
+            </tr>
+            <tr>
+                <td>git --version</td>
+                <td>Revisar la version actual de git que tiene tu dispositivo</td>
+            </tr>
+            <tr>
+                <td>git add 'archivo' o 'carpeta'</td>
+                <td>Revisa archivos modificados o agregados y los agrega al staging area</td>
+            </tr>
+            <tr>
+                <td>git restore --staged 'archivo'</td>
+                <td>Quita el archivo del staging area despues de haberlo añadido.</td>
+            </tr>
+            <tr>
+                <td>git restore 'archivo'</td>
+                <td>Restaura el archivo a su ultima version antes de los cambios.</td>
+            </tr>
+            <tr>
+                <td>git commit -m "mensaje"</td>
+                <td>Compromete todos los nuevos cambios y los registra en la base de datos de cambios, además que tambien manda un mensaje del cambio realizado</td>
+            </tr>
+            <tr>
+                <td>git push -u origin main</td>
+                <td>Agarra los cambios y los sincroniza con el repositorio remoto de github</td>
+            </tr>
+            <tr>
+                <td>git clone 'link del ssh del repositorio'</td>
+                <td>Crea un repositorio local ligado con el repositorio remoto de github</td>
+            </tr>
+            <tr>
+                <td>git branch -a</td>
+                <td>Muestra todas las ramas del repositorio local y remoto</td>
+            </tr>
+            <tr>
+                <td>git branch 'rama'</td>
+                <td>Crea una nueva rama</td>
+            </tr>
+            <tr>
+                <td>git checkout -b 'rama'</td>
+                <td>Crea una nueva rama con el nombre dado y directamente de cambia a esa rama.</td>
+            </tr>
+            <tr>
+                <td>git checkout 'rama' , git switch 'rama'</td>
+                <td>Te cambia a la rama escrita</td>
+            </tr>
+            <tr>
+                <td>git push -u origin 'rama'</td>
+                <td>Hace un push desde la rama seleccionada, y todos los cambios se mantienen en esa rama</td>
+            </tr>
+            <tr>
+                <td>git merge 'rama'</td>
+                <td>Merge la rama seleccionada con la rama principal para guardar los cambios. Este comando se debe de usar estando en la rama principal</td>
+            </tr>
+            <tr>
+                <td>git push</td>
+                <td>Hace el push del merge</td>
+            </tr>
+            <tr>
+                <td>git branch -d 'rama'</td>
+                <td>Borra la rama seleccionada</td>
+            </tr>
+            <tr>
+                <td>git push origin -d 'rama'</td>
+                <td>Borra la rama seleccionada del repositorio remoto</td>
+            </tr>
+            <tr>
+                <td>git fetch -a</td>
+                <td>Jala todas las ramas y los cambios hechos del repositorio remoto</td>
+            </tr>
+            <tr>
+                <td>git pull origin 'rama'</td>
+                <td>Jala todos los cambios ya hechos hacia la rama seleccionada</td>
+            </tr>
+        </table>
+    </main>
+
+    <footer>
+        <a href="Mi_blog.html"><button>Volver al inicio</button></a>
+    </footer>
+</body>
+</html>

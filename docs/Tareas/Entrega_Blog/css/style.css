@@ -1,8 +1,6 @@
 body, li a{
     font-family: 'Courier New', Courier, monospace;
     margin: 0 auto;
-    background-color: rgb(33, 32, 32);
-    color: rgb(255, 255, 255);
 }
 
 header {
