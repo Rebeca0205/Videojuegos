@@ -1,0 +1,40 @@
+.elementosCSS{
+    display: flex;
+    padding: 0px 20px;
+    align-items: center;
+    gap: 40px;
+}
+
+#selectores {
+    display: flex;
+    padding: 0px 20px;
+    align-items: center;
+    text-align: center;
+    font-size: 13px;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+#selectores article{
+    flex: 1;
+    border: 2px dotted #436cff;
+    padding: 0px 10px;
+}
+
+#selectores article:first-child{
+    padding: 38px 10px;
+}
+
+#selectores article p:nth-child(3){
+    color:rgb(0, 119, 255);
+    font-weight: 700;
+}
+
+strong {
+    color: rgb(2, 93, 239);
+}
+
+img {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
