@@ -50,6 +50,17 @@ class Paddle extends GameObject{
     }
 }
 
+class ExtraLive extends GameObject {
+    constructor(position) {
+        super(position, 20, 20, "green", "extralive");
+        this.velocity = new Vec(0, 0.1);
+    }
+
+    update(deltaTime) {
+        this.position = this.position.plus(this.velocity.times(deltaTime));
+    }
+}
+
 const box = new Ball(new Vec(canvasWidth / 2, canvasHeight/2 +100), 10, 10, "white");
 const mainPaddle = new Paddle(new Vec(canvasWidth/2 -30,canvasHeight - 50), 80, 20, "white");
 const bottomBar = new GameObject(new Vec(0, canvasHeight - 1), canvasWidth, 1, "black", "obstacle");
@@ -58,8 +69,10 @@ const letfBar = new GameObject(new Vec(0, 0), 1, canvasHeight, "black", "obstacl
 const rightBar = new GameObject(new Vec(canvasWidth - 1,0), 1, canvasHeight, "black", "obstacle");
 const livesLabel = new TextLabel(20, 35, "30px Arial", "white");
 const DestroyesBlocksLabel = new TextLabel(150, 35, "30px Arial", "white");
-const gameOverLabel = new TextLabel(170, canvasHeight/2 +150, "30px Arial", "black");
+const gameOverLabel = new TextLabel(170, canvasHeight/2 +200, "30px Arial", "black");
 const winLabel = new TextLabel(170, canvasHeight/2 +150, "30px Arial", "black");
+
+let extralives = [];
 
 let colors = ["red", "yellow", "blue"];
 let filas = 8, columnas = 8, blockWidth = 75, blockHeight = 20, gap = 20;
@@ -70,9 +83,9 @@ function doBlocks(){
     blocks = [];
     for (let i = 0; i < filas; i++){
         for(let j = 0; j < columnas; j++){
-            let x = i * (blockWidth + gap) + 20;
-            let y = j * (blockHeight + gap) + 50;
-            blocks.push(new GameObject(new Vec(x, y), blockWidth, blockHeight, colors[i % colors.length], "block"));
+            let x = j * (blockWidth + gap) + 20;
+            let y = i * (blockHeight + gap) + 50;
+            blocks.push(new GameObject(new Vec(x, y), blockWidth, blockHeight, colors[j % colors.length], "block"));
         }
     }
 }
@@ -136,6 +149,11 @@ function drawScene(newTime) {
     winLabel.draw(ctx, "You won! Press 's' to play again");
     box.draw(ctx);
     mainPaddle.draw(ctx);
+    extralives.forEach(extralives => {
+        extralives.draw(ctx);
+        extralives.update(deltaTime);
+    });
+
     bottomBar.draw(ctx);
     topBar.draw(ctx);
     letfBar.draw(ctx);
@@ -148,6 +166,11 @@ function drawScene(newTime) {
 
     if (boxOverlap(box, mainPaddle)){
         box.velocity.y *= -1;
+        if (box.position.x < mainPaddle.position.x + mainPaddle.width / 2) {
+            box.velocity.x = -Math.abs(box.velocity.x);
+        } else {
+            box.velocity.x = Math.abs(box.velocity.x);
+        }
         box.velocity = box.velocity.times(1.1);
     }
     if (boxOverlap(box, letfBar) || boxOverlap(box, rightBar)){
@@ -178,9 +201,23 @@ function drawScene(newTime) {
             }
 
             destroyedBlocks += 1;
+
+            // 10% de probabilidad de generar una vida extra
+            if (Math.random() < 0.1) {
+                extralives.push(new ExtraLive(new Vec(block.position.x + blockWidth / 2, block.position.y)));
+            }
+
             return false; // Elimina el bloque
         }
         return true; // Mantiene el bloque en la lista
+    });
+
+    extralives = extralives.filter(extralives => {
+        if (boxOverlap(extralives, mainPaddle)) {
+            lives += 1; // Sumar una vida extra
+            return false; // Elimina el power-up
+        }
+        return extralives.position.y < canvasHeight; // Elimina si toca el suelo
     });
 
     if(destroyedBlocks == 64){
