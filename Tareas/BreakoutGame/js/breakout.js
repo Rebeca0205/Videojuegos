@@ -75,12 +75,14 @@ const winLabel = new TextLabel(170, canvasHeight/2 +150, "30px Arial", "black");
 let extralives = [];
 
 let colors = ["red", "yellow", "blue"];
-let filas = 8, columnas = 8, blockWidth = 75, blockHeight = 20, gap = 20;
+let blockWidth = 75, blockHeight = 20, gap = 20;
 let blocks = [];
 let destroyedBlocks = 0;
 
 function doBlocks(){
     blocks = [];
+    let filas = parseInt(document.getElementById('filas').value);
+    let columnas = parseInt(document.getElementById('columnas').value);
     for (let i = 0; i < filas; i++){
         for(let j = 0; j < columnas; j++){
             let x = j * (blockWidth + gap) + 20;
@@ -130,6 +132,9 @@ function createEventListeners(){
             winLabel.color = "black";
         }
     });
+
+    document.getElementById('filas').addEventListener('change', doBlocks);
+    document.getElementById('columnas').addEventListener('change', doBlocks);
 }
 
 function drawScene(newTime) {
@@ -166,12 +171,6 @@ function drawScene(newTime) {
 
     if (boxOverlap(box, mainPaddle)){
         box.velocity.y *= -1;
-        if (box.position.x < mainPaddle.position.x + mainPaddle.width / 2) {
-            box.velocity.x = -Math.abs(box.velocity.x);
-        } else {
-            box.velocity.x = Math.abs(box.velocity.x);
-        }
-        box.velocity = box.velocity.times(1.1);
     }
     if (boxOverlap(box, letfBar) || boxOverlap(box, rightBar)){
         box.velocity.x *= -1;
@@ -199,6 +198,7 @@ function drawScene(newTime) {
             } else {
                 box.velocity.x = Math.abs(box.velocity.x);
             }
+            box.velocity = box.velocity.times(1.1);
 
             destroyedBlocks += 1;
 
@@ -209,8 +209,17 @@ function drawScene(newTime) {
 
             return false; // Elimina el bloque
         }
+
         return true; // Mantiene el bloque en la lista
     });
+
+    if(blocks.length === 0){
+        box.reset();
+        doBlocks();
+        lives = 3;
+        destroyedBlocks = 0;
+        winLabel.color = "white";
+    }
 
     extralives = extralives.filter(extralives => {
         if (boxOverlap(extralives, mainPaddle)) {
@@ -219,10 +228,6 @@ function drawScene(newTime) {
         }
         return extralives.position.y < canvasHeight; // Elimina si toca el suelo
     });
-
-    if(destroyedBlocks == 64){
-        winLabel.color = "white";
-    }
 
     oldTime = newTime;
     requestAnimationFrame(drawScene);
