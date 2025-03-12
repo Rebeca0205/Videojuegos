@@ -191,12 +191,28 @@ function drawScene(newTime) {
 
     blocks = blocks.filter(block => { //Crea una copia de la lista de bloques
         if (boxOverlap(box, block)) {
-            box.velocity.y *= -1;
-            
-            if (box.position.x < block.position.x + block.width / 2) {
-                box.velocity.x = -Math.abs(box.velocity.x);
+            const ballCenterX = box.position.x + box.width / 2;
+            const ballCenterY = box.position.y + box.height / 2;
+            const blockCenterX = block.position.x + block.width / 2;
+            const blockCenterY = block.position.y + block.height / 2;
+
+            const diffX = ballCenterX - blockCenterX;
+            const diffY = ballCenterY - blockCenterY;
+
+            const overlapX = block.width / 2 + box.width / 2 - Math.abs(diffX);
+            const overlapY = block.height / 2 + box.height / 2 - Math.abs(diffY);
+
+            // Determina el lado del impacto según el mayor solapamiento
+            if (overlapX < overlapY) {
+                // Colisión lateral
+                if (diffX < 0) {
+                    box.velocity.x = -Math.abs(box.velocity.x);
+                } else {
+                    box.velocity.x = Math.abs(box.velocity.x);
+                }
             } else {
-                box.velocity.x = Math.abs(box.velocity.x);
+                // Colisión vertical
+                box.velocity.y *= -1;
             }
             box.velocity = box.velocity.times(1.1);
 
