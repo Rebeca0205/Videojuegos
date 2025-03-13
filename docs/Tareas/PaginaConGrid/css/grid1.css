@@ -1,0 +1,39 @@
+body{
+    background-color: gray;
+    height: 100vh;
+}
+
+.gridContainer{
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+}
+
+.gridContainer article{
+    background-color: aquamarine;
+    padding: 10px;
+    border: 3px solid white;
+}
+
+.gridContainer article:first-child{
+    background-color: rgb(253, 4, 87);
+}
+
+.gridContainer article:nth-child(2){
+    background-color: rgb(218, 93, 52);
+}
+
+.gridContainer article:nth-child(3){
+    background-color: rgb(232, 135, 0);
+
+}
+
+.gridContainer article:nth-child(4){
+    background-color: rgb(77, 146, 67);
+}
+
+.gridContainer article:nth-child(5){
+    background-color: rgb(48, 174, 113);
+}
