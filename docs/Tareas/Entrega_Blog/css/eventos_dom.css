@@ -1,0 +1,32 @@
+.container{
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+table, td{
+    border: 1px solid black;
+}
+
+.resizable {
+    transition: width 0.5s, height 0.5s;
+}
+
+.size1 {
+    width: 300px;
+    height: 300px;
+}
+
+.size2 {
+    width: 400px;
+    height: 400px;
+}
+
+.size3 {
+    width: 500px;
+    height: 500px;
+}
+
+.size4 {
+    width: 600px;
+    height: 600px;
+}
